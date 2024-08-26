@@ -17,11 +17,9 @@ function openBookForm() {
 
 function showBooksVisually() {
     bookContainer.textContent = '';
-    let c = 0; //to use this index later to delete book form myLibrary
     for (const book of myLibrary) {
         const bookCard = document.createElement('div');
-        bookCard.classList.add('book-card')
-        bookCard.setAttribute('index', c);
+        bookCard.classList.add('book-card');
         for (const property in book) {
                 const paragraph = document.createElement('p');
                 if(property == 'title'){
@@ -45,37 +43,13 @@ function showBooksVisually() {
             removeBookFromLibrary(e);
         })
         bookContainer.appendChild(bookCard);
-        c++
     }
 }
 
-function removeBookFromLibrary(event) {
-    indexOfBook = +event.target.parentNode.getAttribute("index");
-    myLibrary.splice(indexOfBook, 1);
-    showBooksVisually();
-}
+function setIndexToNodeElements() {
+    let c = 0; //to use this index later to delete book form myLibrary
+    for(const book of myLibrary) {
 
-const library = document.querySelector('.library');
-const bookContainer = document.querySelector('.book-container');
-const bookForm = document.querySelector('.book-form');
-const addToLibraryBtn = bookForm.querySelector('button');
-const bookTitleInput = bookForm.querySelector('*[id="title"]');
-const bookAuthorInput = bookForm.querySelector('*[id="author"]');
-const bookPagesNumberInput = bookForm.querySelector('*[id="pages"]');
-const bookReadStatusInput = bookForm.querySelectorAll('*[name="readStatus"]');
-bookForm.remove();
-const addBookButton = document.querySelector('.library > .addBook');
-
-
-addBookButton.addEventListener('click', openBookForm);
-addToLibraryBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    let readStatus
-    if (bookReadStatusInput[0].checked) {
-        readStatus = +bookReadStatusInput[0].value;
     }
-    else readStatus = +bookReadStatusInput[1].value;
-    addBookToLibrary(bookTitleInput.value, bookAuthorInput.value, bookPagesNumberInput.value, readStatus);
-    showBooksVisually();
-    bookForm.remove();
-})
+    c++
+}
