@@ -17,42 +17,50 @@ function openBookForm() {
 
 function showBooksVisually() {
     bookContainer.textContent = '';
-    let c = 0; //to use this index later to delete book form myLibrary
     for (const book of myLibrary) {
         const bookCard = document.createElement('div');
         bookCard.classList.add('book-card')
-        bookCard.setAttribute('index', c);
         for (const property in book) {
-                const paragraph = document.createElement('p');
-                if(property == 'title'){
-                    paragraph.textContent = 'Book: ' + book[property];
-                }
-                else if(property == 'author'){
-                    paragraph.textContent = 'Author: ' + book[property];
-                }
-                else if(property == 'pages') {
-                    paragraph.textContent = book[property] + ' pages';
-                }
-                else paragraph.textContent = book[property]? 'Read': 'Not Read';
-                bookCard.appendChild(paragraph);
+            const paragraph = document.createElement('p');
+            if (property == 'title') {
+                paragraph.textContent = 'Book: ' + book[property];
+            }
+            else if (property == 'author') {
+                paragraph.textContent = 'Author: ' + book[property];
+            }
+            else if (property == 'pages') {
+                paragraph.textContent = book[property] + ' pages';
+            }
+            else paragraph.textContent = book[property] ? 'Read' : 'Not Read';
+            bookCard.appendChild(paragraph);
         }
         const deleteBookButton = document.createElement('button');
         deleteBookButton.classList.add('delete-book-btn');
         deleteBookButton.textContent = 'Delete';
         bookCard.appendChild(deleteBookButton);
-        deleteBookButton.addEventListener('click', (e)=>{
-            bookCard.remove();
-            removeBookFromLibrary(e);
+        deleteBookButton.addEventListener('click', (e) => {
+            removeBookFromLibrary(e.target.parentNode);
+            setIndexAttributeToNodes();
         })
         bookContainer.appendChild(bookCard);
-        c++
+        setIndexAttributeToNodes();
     }
 }
 
-function removeBookFromLibrary(event) {
-    indexOfBook = +event.target.parentNode.getAttribute("index");
+function removeBookFromLibrary(bookCard) {
+    indexOfBook = +bookCard.getAttribute("index");
     myLibrary.splice(indexOfBook, 1);
-    showBooksVisually();
+    bookCard.remove();
+    setIndexAttributeToNodes();
+}
+
+function setIndexAttributeToNodes() {
+    const Books = document.querySelectorAll('.library > .book-container > *')
+    let i = 0;
+    for (const bookNode of Books) {
+        bookNode.setAttribute('index', i);
+        i++
+    }
 }
 
 const library = document.querySelector('.library');
@@ -70,7 +78,7 @@ const addBookButton = document.querySelector('.library > .addBook');
 addBookButton.addEventListener('click', openBookForm);
 addToLibraryBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    let readStatus
+    let readStatus;
     if (bookReadStatusInput[0].checked) {
         readStatus = +bookReadStatusInput[0].value;
     }
