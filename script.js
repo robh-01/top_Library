@@ -31,7 +31,22 @@ function showBooksVisually() {
             else if (property == 'pages') {
                 paragraph.textContent = book[property] + ' pages';
             }
-            else paragraph.textContent = book[property] ? 'Read' : 'Not Read';
+            else {
+                paragraph.textContent = book[property] ? 'Read' : 'Not Read';
+                if (book[property]) {
+                    paragraph.setAttribute('read-status', 1);
+                    paragraph.textContent = 'Read';
+                    paragraph.classList.add('read-book');
+                }
+                else {
+                    paragraph.setAttribute('read-status', 0);
+                    paragraph.textContent = 'Not Read';
+                }
+                paragraph.addEventListener('click', (e) => {
+                    changeReadStatusVisually(e.target);
+
+                });
+            }
             bookCard.appendChild(paragraph);
         }
         const deleteBookButton = document.createElement('button');
@@ -45,6 +60,18 @@ function showBooksVisually() {
         bookContainer.appendChild(bookCard);
         setIndexAttributeToNodes();
     }
+}
+
+function changeReadStatusVisually(readStatusParagraph) {
+    readStatusParagraph.classList.toggle('read-book');
+    let newReadStatus = (readStatusParagraph.getAttribute('read-status')) ? 0 : 1;
+    readStatusParagraph.setAttribute('read-status', newReadStatus);
+    changeReadStatusInObject(readStatusParagraph.parentNode.getAttribute('index'));
+}
+
+function changeReadStatusInObject(indexOfBookObject) {
+    myLibrary[indexOfBookObject].readStatus = (myLibrary[indexOfBookObject].readStatus) ? 0 : 1;
+    showBooksVisually();
 }
 
 function removeBookFromLibrary(bookCard) {
@@ -73,7 +100,6 @@ const bookPagesNumberInput = bookForm.querySelector('*[id="pages"]');
 const bookReadStatusInput = bookForm.querySelectorAll('*[name="readStatus"]');
 bookForm.remove();
 const addBookButton = document.querySelector('.library > .addBook');
-
 
 addBookButton.addEventListener('click', openBookForm);
 addToLibraryBtn.addEventListener('click', (e) => {

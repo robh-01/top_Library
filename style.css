@@ -113,3 +113,17 @@ nav > p:nth-child(1) {
   }
 }
 
+.book-card > p[read-status]{
+  width: 100%;
+  border-radius: 12px;
+  text-align: center;
+  background-color: orange;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.book-card > .read-book[read-status] {
+  background-color: rgb(32, 196, 32);
+}
