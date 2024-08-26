@@ -23,8 +23,28 @@
       </p>
     </nav>
     <form action="" class="book-form">
-      <input type="text" />
-      <button type="button">submit</button>
+      <fieldset>
+        <legend>Add the book you want</legend>
+        <div>
+          <label for="title">Title</label><br />
+          <input type="text" name="" id="#title" />
+        </div>
+        <div>
+          <label for="author">Author</label><br />
+          <input type="text" name="" id="author" />
+        </div>
+        <div>
+        <label for="pages">Number of Pages</label><br>
+            <input type="number" name="" id="pages">
+        </div>
+        <div>
+            <p>Have you read this book?</p>
+            <label for="yes">Yes</label>
+            <input type="radio" id="yes" name="readStatus">
+            <label for="no">No</label>
+            <input type="radio" id="no" name="readStatus">
+        </div>
+      </fieldset>
     </form>
     <main class="library">
       <button class="addBook">+ Add book</button>
