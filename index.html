@@ -27,7 +27,7 @@
         <legend>Add the book you want</legend>
         <div>
           <label for="title">Title</label><br />
-          <input type="text" name="" id="#title" />
+          <input type="text" name="" id="title" />
         </div>
         <div>
           <label for="author">Author</label><br />
@@ -40,10 +40,11 @@
         <div>
             <p>Have you read this book?</p>
             <label for="yes">Yes</label>
-            <input type="radio" id="yes" name="readStatus">
+            <input type="radio" id="yes" name="readStatus" value="1" checked>
             <label for="no">No</label>
-            <input type="radio" id="no" name="readStatus">
+            <input type="radio" id="no" name="readStatus" value="0">
         </div>
+        <button type="submit">Add</button>
       </fieldset>
     </form>
     <main class="library">
