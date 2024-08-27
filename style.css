@@ -51,6 +51,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   font-family: "Poppins", "sans-serif";
+  background-color: #f0eef1;
 }
 
 nav {
@@ -66,6 +67,46 @@ nav {
 nav > p:nth-child(1) {
   font-size: 46px;
   font-weight: 700;
+}
+
+.book-form {
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  font-size: 20px;
+  background-color: rgba(128, 128, 128, 0.5);
+}
+
+.book-form > fieldset {
+  position: relative;
+  background-color: white;
+  border-radius: 12px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-form legend {
+  position: absolute;
+  top: 20px;
+  font-size: 26px;
+  font-weight: 600;
+  align-self: center;
+}
+
+.book-form > fieldset > div {
+  margin-bottom: 20px;
+
+  &:first-of-type {
+    margin-top: 40px;
+  }
 }
 
 .library {
@@ -102,7 +143,7 @@ nav > p:nth-child(1) {
 
 .book-card > .delete-book-btn {
   width: 100%;
-  background-color: #F39A9B;
+  background-color: #f39a9b;
   border-radius: 12px;
   border: none;
   outline: none;
@@ -113,7 +154,7 @@ nav > p:nth-child(1) {
   }
 }
 
-.book-card > p[read-status]{
+.book-card > p[read-status] {
   width: 100%;
   border-radius: 12px;
   text-align: center;
