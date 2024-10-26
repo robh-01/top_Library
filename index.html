@@ -16,7 +16,9 @@
     <nav>
       <p>library</p>
       <p>
-        a project by <a href="https://github.com/robh-01" target="_blank">Roshan Bhusal</a> for
+        a project by
+        <a href="https://github.com/robh-01" target="_blank">Roshan Bhusal</a>
+        for
         <a href="https://www.theodinproject.com/" target="_blank"
           >The Odin Project</a
         >
@@ -27,30 +29,29 @@
         <legend>Add the book you want</legend>
         <div>
           <label for="title">Title</label><br />
-          <input type="text" name="" id="title" />
+          <input type="text" name="" id="title" required />
         </div>
         <div>
           <label for="author">Author</label><br />
-          <input type="text" name="" id="author" />
+          <input type="text" name="" id="author" required />
         </div>
         <div>
-        <label for="pages">Number of Pages</label><br>
-            <input type="number" name="" id="pages">
+          <label for="pages">Number of Pages</label><br />
+          <input type="number" name="" id="pages" required />
         </div>
         <div>
-            <p>Have you read this book?</p>
-            <label for="yes">Yes</label>
-            <input type="radio" id="yes" name="readStatus" value="1">
-            <label for="no">No</label>
-            <input type="radio" id="no" name="readStatus" value="0" checked>
+          <p>Have you read this book?</p>
+          <label for="yes">Yes</label>
+          <input type="radio" id="yes" name="readStatus" value="1" />
+          <label for="no">No</label>
+          <input type="radio" id="no" name="readStatus" value="0" checked />
         </div>
         <button type="submit">Add</button>
       </fieldset>
     </form>
     <main class="library">
       <button class="addBook">+ Add book</button>
-      <div class="book-container">
-      </div>
+      <div class="book-container"></div>
     </main>
     <script src="script.js" defer></script>
   </body>
